@@ -1,5 +1,36 @@
-### https://raw.github.com/github/gitignore/e0c0883a6ad13c3bdf547d2eb9f2d0ecbcd15347/Android.gitignore
+# Created by https://www.gitignore.io
 
+### Intellij ###
+# Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm
+
+*.iml
+
+## Directory-based project format:
+.idea/
+
+
+## File-based project format:
+*.ipr
+*.iws
+
+## Plugin-specific files:
+
+# IntelliJ
+/out/
+
+# mpeltonen/sbt-idea plugin
+.idea_modules/
+
+# JIRA plugin
+atlassian-ide-plugin.xml
+
+# Crashlytics plugin (for Android Studio and IntelliJ)
+com_crashlytics_export_strings.xml
+crashlytics.properties
+crashlytics-build.properties
+
+
+### Android ###
 # Built application files
 *.apk
 *.ap_
@@ -17,6 +48,7 @@ gen/
 # Gradle files
 .gradle/
 build/
+/*/build/
 
 # Local configuration file (sdk path, etc)
 local.properties
@@ -27,9 +59,11 @@ proguard/
 # Log Files
 *.log
 
+### Android Patch ###
+gen-external-apklibs
 
-### https://raw.github.com/github/gitignore/e0c0883a6ad13c3bdf547d2eb9f2d0ecbcd15347/Java.gitignore
 
+### Java ###
 *.class
 
 # Mobile Tools for Java (J2ME)
@@ -42,29 +76,3 @@ proguard/
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
-
-
-### https://raw.github.com/github/gitignore/e0c0883a6ad13c3bdf547d2eb9f2d0ecbcd15347/Global/OSX.gitignore
-
-.DS_Store
-.AppleDouble
-.LSOverride
-
-# Icon must end with two \r
-Icon
-
-# Thumbnails
-._*
-
-# Files that might appear on external disk
-.Spotlight-V100
-.Trashes
-
-# Directories potentially created on remote AFP share
-.AppleDB
-.AppleDesktop
-Network Trash Folder
-Temporary Items
-.apdisk
-
-

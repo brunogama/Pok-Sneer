@@ -1,8 +1,11 @@
 package org.brunogama.pokesneer.rest;
 
+import com.squareup.okhttp.OkHttpClient;
+
 import org.brunogama.pokesneer.BuildConfig;
 
 import retrofit.RestAdapter;
+import retrofit.client.OkClient;
 
 public class RestClient {
     private static PokeAPIInterface REST_CLIENT;
@@ -18,9 +21,11 @@ public class RestClient {
     }
 
     private static void setupRestClient() {
+        RestAdapter.LogLevel logLevel = BuildConfig.DEBUG ? RestAdapter.LogLevel.BASIC : RestAdapter.LogLevel.NONE;
         RestAdapter.Builder builder = new RestAdapter.Builder()
                 .setEndpoint(BuildConfig.SERVER_URL)
-                .setLogLevel(RestAdapter.LogLevel.FULL);
+                .setClient(new OkClient(new OkHttpClient()))
+                .setLogLevel(logLevel);
 
         RestAdapter restAdapter = builder.build();
         REST_CLIENT = restAdapter.create(PokeAPIInterface.class);
