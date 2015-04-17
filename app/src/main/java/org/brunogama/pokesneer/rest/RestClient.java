@@ -1,4 +1,4 @@
-package com.helabs.pokesneer.rest;
+package org.brunogama.pokesneer.rest;
 
 
 import com.helabs.pokesneer.BuildConfig;

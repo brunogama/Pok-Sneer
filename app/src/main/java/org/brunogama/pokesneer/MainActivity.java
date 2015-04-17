@@ -1,11 +1,14 @@
-package com.helabs.pokesneer;
+package org.brunogama.pokesneer;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.util.Log;
 
-import com.helabs.pokesneer.model.Pokemon;
-import com.helabs.pokesneer.rest.RestClient;
+import com.helabs.pokesneer.BuildConfig;
+import com.helabs.pokesneer.R;
+
+import org.brunogama.pokesneer.model.Pokemon;
+import org.brunogama.pokesneer.rest.RestClient;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EActivity;

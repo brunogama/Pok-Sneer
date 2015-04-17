@@ -1,16 +1,47 @@
 apply plugin: 'com.android.application'
 apply plugin: 'android-apt'
 
+def getVersionCode = { ->
+    try {
+        def stdout = new ByteArrayOutputStream()
+        exec {
+            commandLine 'git', 'rev-list', '--count', 'master'
+            standardOutput = stdout
+        }
+        return Integer.parseInt(stdout.toString().trim())
+    } catch (s) {
+        println s
+        return 1
+    }
+}
+
+def getVersionName = { ->
+    try {
+        def stdout = new ByteArrayOutputStream()
+        exec {
+            commandLine 'git', 'describe', '--tags', '--abbrev=0'
+            standardOutput = stdout
+        }
+        return stdout.toString().trim()
+    } catch (s) {
+        println s
+        return "1.0"
+    }
+}
+
+def completeVersion = getVersionName() + "." + getVersionCode()
+
+
 android {
     compileSdkVersion 22
     buildToolsVersion "22.0.1"
 
     defaultConfig {
-        applicationId "com.helabs.pokesneer"
+        applicationId "org.brunogama.pokesneer"
         minSdkVersion 16
         targetSdkVersion 22
-        versionCode 1
-        versionName "1.0"
+        versionCode getVersionCode() ?: 1
+        versionName completeVersion ?: 1
     }
 
     buildTypes {
@@ -18,20 +49,33 @@ android {
         def PRODUCTION_SERVER_URL = "\"http://$APP_DOMAIN\""
         def STRING = "String"
         def SERVER_URL = "SERVER_URL"
+        def INT = "int"
+        def TOTAL_OF_POKEMONS = "TOTAL_OF_POKEMONS"
+        def TOTAL_OF_POKEMONS_VALUE = "718"
 
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
 
             buildConfigField STRING, SERVER_URL, PRODUCTION_SERVER_URL
-            buildConfigField "int", "TOTAL_OF_POKEMONS", "718"
+            buildConfigField INT, TOTAL_OF_POKEMONS, TOTAL_OF_POKEMONS_VALUE
         }
 
         debug {
-
             buildConfigField STRING, SERVER_URL, PRODUCTION_SERVER_URL
-            buildConfigField "int", "TOTAL_OF_POKEMONS", "718"
+            buildConfigField INT, TOTAL_OF_POKEMONS, TOTAL_OF_POKEMONS_VALUE
         }
+    }
+
+    packagingOptions {
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/license.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/notice.txt'
+        exclude 'META-INF/ASL2.0'
+        exclude 'META-INF/DEPENDENCIES'
     }
 }
 

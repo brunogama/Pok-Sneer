@@ -1,4 +1,4 @@
-package com.helabs.pokesneer.model;
+package org.brunogama.pokesneer.model;
 
 import com.google.gson.annotations.Expose;
 

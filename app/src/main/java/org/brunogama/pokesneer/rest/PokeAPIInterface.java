@@ -1,6 +1,6 @@
-package com.helabs.pokesneer.rest;
+package org.brunogama.pokesneer.rest;
 
-import com.helabs.pokesneer.model.Pokemon;
+import org.brunogama.pokesneer.model.Pokemon;
 
 import retrofit.Callback;
 import retrofit.http.GET;
