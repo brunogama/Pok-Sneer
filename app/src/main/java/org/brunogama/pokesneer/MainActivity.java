@@ -4,14 +4,10 @@ import android.app.Activity;
 import android.content.Intent;
 import android.util.Log;
 
-import com.helabs.pokesneer.BuildConfig;
-import com.helabs.pokesneer.R;
-
-import org.brunogama.pokesneer.model.Pokemon;
-import org.brunogama.pokesneer.rest.RestClient;
-
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EActivity;
+import org.brunogama.pokesneer.model.Pokemon;
+import org.brunogama.pokesneer.rest.RestClient;
 
 import java.util.Random;
 
@@ -28,7 +24,6 @@ public class MainActivity extends Activity {
         fetchRandomPokemonFromAPI();
     }
 
-//    @Click(R.id.buton)
     void fetchRandomPokemonFromAPI() {
         if (BuildConfig.DEBUG) {
             Log.i(TAG, "fetchRandomPokemonFromAPI");
