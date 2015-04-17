@@ -39,10 +39,6 @@ public class Pokemon {
 
     @Override
     public String toString() {
-        return "Pokemon{" +
-                "attack='" + attack + '\'' +
-                ", defense='" + defense + '\'' +
-                ", name='" + name + '\'' +
-                '}';
+        return String.format("I choose you %s!\n Attack %s\n Defense %s", name, attack, defense);
     }
 }
