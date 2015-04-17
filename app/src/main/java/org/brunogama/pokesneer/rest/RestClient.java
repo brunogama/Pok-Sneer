@@ -1,7 +1,6 @@
 package org.brunogama.pokesneer.rest;
 
-
-import com.helabs.pokesneer.BuildConfig;
+import org.brunogama.pokesneer.BuildConfig;
 
 import retrofit.RestAdapter;
 
