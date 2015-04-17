@@ -1,12 +1,13 @@
 package com.helabs.pokesneer;
 
-import android.support.v7.app.ActionBarActivity;
+import android.app.Activity;
+import android.content.Intent;
 import android.util.Log;
 
 import com.helabs.pokesneer.model.Pokemon;
 import com.helabs.pokesneer.rest.RestClient;
 
-import org.androidannotations.annotations.Click;
+import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EActivity;
 
 import java.util.Random;
@@ -16,9 +17,15 @@ import retrofit.RetrofitError;
 import retrofit.client.Response;
 
 @EActivity(R.layout.activity_main)
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends Activity {
     private static String TAG = "MainActivity";
-    @Click(R.id.buton)
+
+    @AfterViews
+    void init() {
+        fetchRandomPokemonFromAPI();
+    }
+
+//    @Click(R.id.buton)
     void fetchRandomPokemonFromAPI() {
         if (BuildConfig.DEBUG) {
             Log.i(TAG, "fetchRandomPokemonFromAPI");
@@ -33,6 +40,8 @@ public class MainActivity extends ActionBarActivity {
                 if (BuildConfig.DEBUG) {
                     Log.d(TAG, "fetched =" + pokemon);
                 }
+                startService(getIntent().<Intent>getParcelableExtra("SEND_MESSAGE").setAction(pokemon.toString()));
+                finish();
             }
 
             @Override
@@ -40,7 +49,9 @@ public class MainActivity extends ActionBarActivity {
                 if (BuildConfig.DEBUG) {
                     Log.e(TAG, "error =" + error);
                 }
+                finish();
             }
         });
     }
+
 }
